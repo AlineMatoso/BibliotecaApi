@@ -1,0 +1,85 @@
+// builder - > construtor da aplicação, onde podemos configurar serviços, middlewares, etc.
+// app - > representa a aplicação em si, onde podemos configurar rotas, middlewares, etc.
+
+
+
+
+
+
+// MapGet - metodo http - metodo de pegar informações, nesse caso, quando o usuário acessar a raiz do site ("/"), ele vai receber a resposta "Bem vindo ao meu site!".
+
+
+// crud - create, read, update, delete
+// create - criar um novo recurso --> post
+// read - ler um recurso existente --> get
+// update - atualizar um recurso existente --> put // patch
+// delete - deletar um recurso existente --> delete
+
+
+MapGet - read
+
+// MapGet - metodo http - metodo de pegar informações, nesse caso, quando o usuário acessar a raiz do site ("/"), ele vai receber a resposta "Hello World!".
+
+STATUS SERVER
+
+200 - OK -> deu certo
+201 - CREATED -> recurso criado. 
+400 - Bad Request -> erro do cliente, enviou dados errados
+202 - NOT FOUND -> Não encontrado
+500 - INTERNAL SERVER ERROR -> problema no servidor
+
+
+Exemplos Metodos MAP
+
+
+app.MapGet("/", () => "Bem vindo ao meu site!"); 
+
+app.MapGet("/autores", () =>
+{
+    List<string> nomes = new List<string>();
+    {
+        nomes.Add("João");
+        nomes.Add("Maria");
+        nomes.Add("Pedro");
+    };
+
+    return nomes;
+});
+//POST - criar um novo autor - passa o autor na URL, por exemplo: http://localhost:5006/autores?nome=Kafka
+
+app.MapPost("/autores", (string nome) =>
+{
+    return Results.Ok($"Autor {nome} adicionado com sucesso!");
+});
+
+//PUT - atualizar um autor existente - passa o id do autor e o novo nome na URL, por exemplo: http://localhost:5006/autores/1?nome=Kafka
+
+app.MapPut("/autores/{id}", (int id, string nome) =>
+{
+    return Results.Ok($"Autor com id {id} atualizado para {nome} com sucesso!");
+});
+
+//PATCH - atualizar parcialmente um autor existente - passa o id do autor e o novo nome na URL, por exemplo: http://localhost:5006/autores/1?nome=Kafka
+
+app.MapPatch("/autores/{id}", (int id, string nome) =>
+{
+    return Results.Ok($"Autor com id {id} atualizado para {nome} com sucesso!");
+});
+
+//DELETE - excluir um autor existente - passa o id do autor na URL, por exemplo: http://localhost:5006/autores/1
+
+app.MapDelete("/autores/{id}", (int id) =>
+{
+    return Results.Ok($"Autor com id {id} excluído com sucesso!");
+});
+
+
+
+
+FERRAMENTA ENTITY FRAMEWORK - ORN - GERENCIADOR DE CÓDIGOS ORIENTADOS A OBJETOS
+ELE CONVERTE A CLASSE EM TABELA DE FORMA AUTOMATICA, NÁO TEM QUE CRIAR TABELA, SOMENTE CODAR NA
+ORIENTAÇÃO A OBJETOS QUE ELE VAI TRANSFORMAR EM TABELAS AUTOMATICAMENTE. 
+
+TODA VEZ QUE CRIAR UM NOVO PROJETO, TEM QUE INSTALAR O ENTITY FRAMEWORK POIS ELE NAO É SALVO NA MAQUINA
+MAS SIM POR PROJETO. 
+

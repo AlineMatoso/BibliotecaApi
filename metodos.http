@@ -1,0 +1,21 @@
+GET http://localhost:5006
+
+###
+
+GET http://localhost:5006/autores 
+
+
+###
+POST http://localhost:5006/autores?nome=Kafka
+
+###
+PUT http://localhost:5006/autores/1?nome=Kafka
+
+###
+PATCH http://localhost:5006/autores/1?nome=Kafka
+
+
+
+###
+
+DELETE http://localhost:5006/autores/1
