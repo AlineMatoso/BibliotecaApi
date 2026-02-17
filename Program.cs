@@ -10,6 +10,13 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
-app.MapGet("/", () => "API da Biblioteca!");
+
+//GET - READ
+
+app.MapGet("/autores", (AppDbContext db ) => {
+    return db.Autores.ToList();
+});
+
+
 
 app.Run();

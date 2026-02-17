@@ -9,12 +9,11 @@ namespace BibliotecaApi
     public class Autor
     {
         public int Id { get; set; }
-        public string Nome { get; set; }
+        public string ?Nome { get; set; }
 
-        public string Sobrenome { get; set; }
+        public string ?Nacionalidade { get; set; }   
+        public DateTime DataNascimento { get; set; } 
 
-        public string Nacionalidade { get; set; }   
-
-        public string Livros { get; set; }
+        public string ?Livros { get; set; }
     }
 }
