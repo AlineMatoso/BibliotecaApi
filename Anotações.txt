@@ -83,3 +83,25 @@ ORIENTAÇÃO A OBJETOS QUE ELE VAI TRANSFORMAR EM TABELAS AUTOMATICAMENTE.
 TODA VEZ QUE CRIAR UM NOVO PROJETO, TEM QUE INSTALAR O ENTITY FRAMEWORK POIS ELE NAO É SALVO NA MAQUINA
 MAS SIM POR PROJETO. 
 
+Funcao assincrona - ele trava o código e espera algo retornar, em geral o banco de dados, ai depois que retorna ele volta pro código e 
+segue a execução. 
+
+---> app.MapGet("/endpoint", async (AppDbContext db ) => {
+    return await tanana
+})
+
+async - que ele vai esperar retornar
+await - espera que a lista seja entregue para mim, espero o banco ir na tabela tal, ai converte para uma lista por exemplo e retorna. 
+o await faz o código esperar o que vai retornar para seguir com a execução. 
+
+return await db.Autores.ToListAsync
+
+como ;e assincrona, tem que colocar o await e o Async na funcao tolist
+
+
+
+
+
+
+// id é auto increment, ou seja, o banco de dados vai gerar o id automaticamente, então não preciso passar o id no corpo da requisição.
+    // "CHAVE" : "VALOR" - o nome da chave tem que ser igual ao nome da propriedade da classe Autor, e o valor tem que ser do tipo da propriedade.
